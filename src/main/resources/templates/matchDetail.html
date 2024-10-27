@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>경기 상세보기</title>
+</head>
+<body>
+<h1>Match Details</h1>
+
+<div th:if="${matchDetails}">
+<!--
+  1. matchDetails에 담겨있는 데이터들을 반복문을 통해 돈다
+  2. 각 유저별로 데이터를 조회하다가 보여주고 싶은 데이터는 추출한다.(유저별 아이템, KDA/CS, 딜량, 받은 딜량, 골드, 스펠...등)
+  3. 추출하면서 개요에서 보여줄 특정 유저도 선별한다.(최고 딜량 / 최다 킬 / 최다 데스 / 최다 어시스트)
+  4. 데이터를 추출하면서 원하는 부분에 넣어준다.
+-->
+  <div>
+    <h2>개요</h2>
+    <div>
+      최고 딜량
+    </div>
+    <div>
+      최다 킬
+    </div>
+    <div>
+      최다 데스
+    </div>
+    <div>
+      최다 어시스트
+    </div>
+  </div>
+
+  <h3>Participants:</h3>
+  <ul>
+    <li th:each="participant : ${matchDetails.info.participants}">
+      <span th:text="${participant.riotIdGameName} + '#' + ${participant.riotIdTagline}"></span>
+    </li>
+  </ul>
+</div>
+
+<div th:if="${#lists.isEmpty(matchDetails.info.participants)}">
+  <p>No participants found</p>
+</div>
+</body>
+</html>

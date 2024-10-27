@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>your.gg Search</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f4f4f9;
+    }
+    .search-container {
+      display: flex;
+      align-items: center;
+      width: 400px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 8px;
+    }
+    .search-input {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      outline: none;
+      font-size: 16px;
+    }
+    .search-button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .search-button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+
+<div class="search-container">
+  <input type="text" id="searchInput" class="search-input">
+  <button class="search-button" onclick="search()">Search</button>
+</div>
+
+<script>
+  function search() {
+    const searchInput = document.getElementById("searchInput").value;
+    // URL 인코딩을 적용하여 특수 문자를 인코딩
+    const encodedSearchName = encodeURIComponent(searchInput);
+
+    // 프로필 경로로 이동
+    window.location.href = `/your.gg/ko/kr/profile/${encodedSearchName}`;
+  }
+</script>
+
+</body>
+</html>
